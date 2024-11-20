@@ -1,23 +1,10 @@
 ﻿using System;
+using Fork;
+
 namespace RefactorFork
 {
     public class Program
     {
-
-        public static bool ValidateInRange(int num, int min, int max)
-        {
-            return (num >= min && num <= max);
-        }
-
-        public static int CalculateProduct(int[] array)
-        {
-            int product = 1;
-            for (int i = 0; i < array.Length; i++)
-            {
-                product *= array[i];
-            }
-            return product;
-        }
 
         public static void Main()
         {
@@ -27,7 +14,7 @@ namespace RefactorFork
             const string Product = "El producte de cada un dels números es: ";
             const string MissatgeError = "Format incorrecte";
 
-            int numInputs = 0, productNumbers;
+            int numInputs = 0;
             bool isInRange = false;
 
             while (!isInRange)
@@ -36,7 +23,7 @@ namespace RefactorFork
                 try
                 {
                     numInputs = Convert.ToInt32(Console.ReadLine());
-                    isInRange = ValidateInRange(numInputs, 15, 100);
+                    isInRange = ForkMethods.ValidateInRange(numInputs, 15, 100);
                 }
                 catch (FormatException)
                 {
@@ -55,7 +42,7 @@ namespace RefactorFork
                     try
                     {
                         numsToCatch[i] = Convert.ToInt32(Console.ReadLine());
-                        isInRange = ValidateInRange(numsToCatch[i], 15, 100);
+                        isInRange = ForkMethods.ValidateInRange(numsToCatch[i], 15, 100);
                     }
                     catch (FormatException)
                     {
@@ -64,7 +51,7 @@ namespace RefactorFork
                 }
             }
 
-            Console.WriteLine(Product + CalculateProduct(numsToCatch));
+            Console.WriteLine(Product + ForkMethods.CalculateProduct(numsToCatch));
         }
     }
 }
